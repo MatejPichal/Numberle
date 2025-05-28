@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <div id="page">
+    <h1>Numberle</h1>
+    <div id="tooltip">Wordle, akorát s čísly (Word-le, Number-le) :D</div>
+    <button id="start-button">Start</button>
+    <div id="game-container" style="display: none;">
+        <div id="number-inputs">
+            <div class="number-row">
+                <input type="number" maxlength="1" class="number-input">
+                <input type="number" maxlength="1" class="number-input">
+                <input type="number" maxlength="1" class="number-input">
+                <input type="number" maxlength="1" class="number-input">
+            </div>
+            <div class="number-row disabled">
+                <input type="number" maxlength="1" class="number-input">
+                <input type="number" maxlength="1" class="number-input">
+                <input type="number" maxlength="1" class="number-input">
+                <input type="number" maxlength="1" class="number-input">
+            </div>
+            <div class="number-row disabled">
+                <input type="number" maxlength="1" class="number-input">
+                <input type="number" maxlength="1" class="number-input">
+                <input type="number" maxlength="1" class="number-input">
+                <input type="number" maxlength="1" class="number-input">
+            </div>
+            <div class="number-row disabled">
+                <input type="number" maxlength="1" class="number-input">
+                <input type="number" maxlength="1" class="number-input">
+                <input type="number" maxlength="1" class="number-input">
+                <input type="number" maxlength="1" class="number-input">
+            </div>
+            <div class="number-row disabled">
+                <input type="number" maxlength="1" class="number-input">
+                <input type="number" maxlength="1" class="number-input">
+                <input type="number" maxlength="1" class="number-input">
+                <input type="number" maxlength="1" class="number-input">
+            </div>
+        </div>
+        <button id="guess-button" type="submit">Submit</button>
+        <div class="keybinds"><b>ESC</b> pro ukončení hry<br><b>ENTER</b> pro submit<br><b>BACKSPACE</b> pro vymazání předešlého pole</div>
+    </div>
+    </div>
+</body>
+</html>
