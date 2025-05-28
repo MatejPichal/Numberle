@@ -12,9 +12,6 @@ document.getElementById('start-button').addEventListener('click', function() {
         document.getElementById("timer").innerHTML = time; //displays time 
     }
      
-    function stopTimer() { 
-        clearInterval(myTimer); //stops timer 
-    }
     var myTimer= setInterval(myTimer, 1000); //starts timer
     var time = 90; //time
 
@@ -91,7 +88,11 @@ document.getElementById('guess-button').addEventListener('click', function() {
         document.getElementById('guess-button').style.display = 'block';
         this.style.display = 'none';
         
-        score = score + 2000;
+        function stopTimer() { 
+            clearInterval(myTimer); //stops timer 
+        }
+
+        stopTimer();
 
         const scoretext = document.createElement('h2');
         scoretext.textContent = 'SKÓRE: ' + score;
@@ -118,10 +119,8 @@ document.getElementById('guess-button').addEventListener('click', function() {
 
         if (guessedDigit === randomNumberStr[index]) { //obarvení
             input.style.backgroundColor = 'green';
-            score = score + 200;
         } else if (randomNumberStr.includes(guessedDigit)) {
             input.style.backgroundColor = 'yellow';
-            score = score + 50;
         } else {
             input.style.backgroundColor = 'red';
         }
@@ -130,12 +129,15 @@ document.getElementById('guess-button').addEventListener('click', function() {
     if (activeRowIndex + 1 < rows.length) {
         rows[activeRowIndex].classList.add('disabled');
         rows[activeRowIndex + 1].classList.remove('disabled'); //přepnutí na další řádek
-        score = score - 425
     } else { //prohra
         document.getElementById('guess-button').style.display = 'block';
         this.style.display = 'none';
+        
+        function stopTimer() { 
+            clearInterval(myTimer); //stops timer 
+        }
 
-        score = score - 500
+        stopTimer();
 
         const scoretext = document.createElement('h2');
         scoretext.textContent = 'SKÓRE: ' + score;
