@@ -88,6 +88,10 @@ document.getElementById('guess-button').addEventListener('click', function() {
         document.getElementById('guess-button').style.display = 'block';
         this.style.display = 'none';
         
+        function myTimer() { 
+            time--; 
+            document.getElementById("timer").innerHTML = time; //displays time 
+        }
         function stopTimer() { 
             clearInterval(myTimer); //stops timer 
         }
@@ -133,6 +137,10 @@ document.getElementById('guess-button').addEventListener('click', function() {
         document.getElementById('guess-button').style.display = 'block';
         this.style.display = 'none';
         
+        function myTimer() { 
+            time--; 
+            document.getElementById("timer").innerHTML = time; //displays time 
+        }
         function stopTimer() { 
             clearInterval(myTimer); //stops timer 
         }
