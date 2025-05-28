@@ -6,19 +6,18 @@ let randomNumber;
 let score = 0;
 const gameContainer = document.getElementById('game-container');
 
-var myTimer= setInterval(myTimer, 1000); //starts timer
-var time = 90; //time
-
-function myTimer() { 
-   time--; 
-   document.getElementById("timer").innerHTML = time; //displays time 
-}
-
-function stopTimer() { 
-   clearInterval(myTimer); //stops timer 
-}
-
 document.getElementById('start-button').addEventListener('click', function() {
+    function myTimer() { 
+        time--; 
+        document.getElementById("timer").innerHTML = time; //displays time 
+    }
+     
+    function stopTimer() { 
+        clearInterval(myTimer); //stops timer 
+    }
+    var myTimer= setInterval(myTimer, 1000); //starts timer
+    var time = 90; //time
+
     randomNumber = generateRandomFourDigitNumber();
     console.log('Generated Number:', randomNumber);
 
