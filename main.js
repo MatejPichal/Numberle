@@ -4,16 +4,38 @@ function generateRandomFourDigitNumber() {
 
 let randomNumber;
 let score = 0;
+let timerInterval; // Timer interval variable
+let time = 90;    // Timer value
 const gameContainer = document.getElementById('game-container');
 
 document.getElementById('start-button').addEventListener('click', function() {
-    function myTimer() { 
-        time--; 
-        document.getElementById("timer").innerHTML = time; //displays time 
-    }
-     
-    var myTimer= setInterval(myTimer, 1000); //starts timer
-    var time = 90; //time
+    time = 90;
+    document.getElementById("timer").innerHTML = time;
+    timerInterval = setInterval(function() {
+        time--;
+        document.getElementById("timer").innerHTML = time;
+        if (time <= 0) {
+            clearInterval(timerInterval);
+            // ukončit hru když vyprší čas
+            const rows = document.querySelectorAll('.number-row');
+            rows.forEach(row => row.classList.add('disabled'));
+            document.getElementById('guess-button').style.display = 'block';
+            this.style.display = 'none';
+            const scoretext = document.createElement('h2');
+            scoretext.textContent = 'SKÓRE: ' + score;
+            gameContainer.appendChild(scoretext);
+            const failureMessage = document.createElement('h2');
+            failureMessage.textContent = 'Čas vypršel! Správné číslo bylo: ' + randomNumber;
+            gameContainer.appendChild(failureMessage);
+            const restartButton = document.createElement('button');
+            restartButton.id = 'restart-button';
+            restartButton.textContent = 'Restart';
+            gameContainer.appendChild(restartButton);
+            restartButton.addEventListener('click', function() {
+                location.reload();
+            });
+        }
+    }, 1000); //starts timer
 
     randomNumber = generateRandomFourDigitNumber();
     console.log('Generated Number:', randomNumber);
@@ -87,16 +109,7 @@ document.getElementById('guess-button').addEventListener('click', function() {
 
         document.getElementById('guess-button').style.display = 'block';
         this.style.display = 'none';
-        
-        function myTimer() { 
-            time--; 
-            document.getElementById("timer").innerHTML = time; //displays time 
-        }
-        function stopTimer() { 
-            clearInterval(myTimer); //stops timer 
-        }
-
-        stopTimer();
+        clearInterval(timerInterval); // Stop timer on win
 
         const scoretext = document.createElement('h2');
         scoretext.textContent = 'SKÓRE: ' + score;
@@ -136,16 +149,7 @@ document.getElementById('guess-button').addEventListener('click', function() {
     } else { //prohra
         document.getElementById('guess-button').style.display = 'block';
         this.style.display = 'none';
-        
-        function myTimer() { 
-            time--; 
-            document.getElementById("timer").innerHTML = time; //displays time 
-        }
-        function stopTimer() { 
-            clearInterval(myTimer); //stops timer 
-        }
-
-        stopTimer();
+        clearInterval(timerInterval); // Stop timer on loss
 
         const scoretext = document.createElement('h2');
         scoretext.textContent = 'SKÓRE: ' + score;
