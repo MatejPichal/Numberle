@@ -3,7 +3,7 @@ function generateRandomFourDigitNumber() {
 }
 
 let randomNumber;
-let score = 0;
+let score = 0; //test
 const gameContainer = document.getElementById('game-container');
 
 document.getElementById('start-button').addEventListener('click', function() {
