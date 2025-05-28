@@ -13,6 +13,11 @@ document.getElementById('start-button').addEventListener('click', function() {
     document.getElementById("timer").innerHTML = time;
     timerInterval = setInterval(function() {
         time--;
+        score = time * 10;
+        if (time >= 60) {
+            score = score - 600 + 1000; // pokud je čas větší než 60, přičte se 1000
+        }
+
         document.getElementById("timer").innerHTML = time;
         if (time <= 0) {
             clearInterval(timerInterval);
